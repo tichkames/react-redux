@@ -3,11 +3,29 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createStore } from 'redux';
+import allReducers from './reducers'
+import { Provider } from 'react-redux';
+
+//Store -> Globalized State
+let store = createStore(
+  allReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
+
+//Display current store
+// store.subscribe(() => console.log(store.getState()))
+
+//Dispatch -> Trigger for Action
+// store.dispatch(increment())
+// store.dispatch(decrement())
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
