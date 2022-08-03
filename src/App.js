@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { increment, decrement } from './actions'
+import { increment, decrement, fetchUsersRequest } from './actions'
 
 function App() {
   const counter = useSelector(state => state.counter);
@@ -12,6 +12,7 @@ function App() {
       <h2>Logged In { isLoggedIn }</h2>
       <button onClick={ () => dispatch(increment(2)) }>+</button>
       <button onClick={ () => dispatch(decrement(2)) }>-</button>
+      <p><button onClick={ () => dispatch(fetchUsersRequest()) }>API Call</button></p>
     </div>
   );
 }

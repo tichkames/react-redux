@@ -1,21 +1,29 @@
+import axios from 'axios'
+
 //Action -> Verb describing what you want to do to the Store
-export const increment = (num) => {
+const increment = (num) => {
   return {
     type: 'INCREMENT',
     payload: num
   }
 }
 
-export const decrement = (num) => {
+const decrement = (num) => {
   return {
     type: 'DECREMENT',
     payload: num
   }
 }
 
-const allActions = {
-  increment,
-  decrement
+const fetchUsersRequest = () => {
+  return async (dispatch) => {
+    const response = await axios.get('https://jsonplaceholder.typicode.com/users')
+    console.log(response.data);
+  }
 }
 
-// export default allActions;
+export {
+  increment,
+  decrement,
+  fetchUsersRequest
+}
